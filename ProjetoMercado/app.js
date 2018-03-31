@@ -44,11 +44,10 @@ function saudacao(){
     return 'Bom dia'
 }
 
-
 //=========================================================
-// Modulo 3 - Lição 3 - LUIS
+// Implementação do BOT com LUIS + API
 //=========================================================
-const recognizer = new builder.LuisRecognizer('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/ae08d102-d326-4302-ac54-d6cd5878328a?subscription-key=3c5f7ceeb8434e70889721d5209da740&verbose=true&timezoneOffset=-180&q=')
+const recognizer = new builder.LuisRecognizer(process.env.LUIS_MODEL_URL)
 
 const intents = new builder.IntentDialog({
     recognizers: [recognizer]
@@ -71,16 +70,15 @@ intents.matches('ValorProduto', (session, args) => {
 
     session.send(`Eu farei a busca do valor do(s) produtos(s): **${produtos}**. Aguarde um momento enquanto eu obtenho os valores.`)
 
-    request (`https://api-valorprodutos.azurewebsites.net/api/Cotacoes/${produtos}`, (err, res, body) => {
+    // Chamada a API de valores de produtos
+    request (process.env.COTACAO_ENDPOINT + `/${produtos}`, (err, res, body) => {
         if(err || !body)
             return session.send('Ocorreu algum erro, por favor tente novamente mais tarde.')
 
         const cotacoes = JSON.parse(body)
-        //session.send(cotacoes.map(p => `${p.nome}: **${p.descricao}**`).join(`\n\n`))
 
         for (var i = 0, len = cotacoes.length; i < len; i++) {
             const card = cards.Create(cotacoes[i], session)
-            // Se o retorno for um array, temos um carousel e o tratamento deve ser um pouco diferente
             const reply = new builder.Message(session).addAttachment(card)
             session.send(reply) 
         }  
@@ -94,7 +92,7 @@ bot.on('conversationUpdate', (update) => {
                 bot.loadSession(update.address, (err, session) => {
                     if(err)
                         return err
-                    const message = `${saudacao()}! Eu sou um bot que verifica o preço de produtos. Em que posso lhe ajudar?\n`
+                    const message = `${saudacao()}! Eu sou o bot **SupermercadoOnline**, que verifica o preço de produtos. Em que posso lhe ajudar?\n`
                     session.send(message)
                 })
             }

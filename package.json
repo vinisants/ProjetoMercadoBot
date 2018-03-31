@@ -1,18 +1,14 @@
 {
-  "name": "worspace-bots",
+  "name": "ProjetoMercadoBot",
   "version": "1.0.0",
   "description": "Maratona de bots",
   "main": "app.js",
   "scripts": {
-    "testm1": "node ./modulo1/app.js",
-    "testm2": "node ./modulo2/app.js",
-    "testm33": "node ./modulo3/licao3/app.js",
-    "testm41": "node ./modulo4/licao1/app.js",
-    "testm42": "node ./modulo4/licao2/app.js"
+    "test": "nodemon ./ProjetoMercado/app.js"
   },
   "repository": {
     "type": "git",
-    "url": "not yet"
+    "url": "https://github.com/vinisants/ProjetoMercadoBot"
   },
   "keywords": [
     "botbuilder",
