@@ -4,7 +4,7 @@
   "description": "Maratona de bots",
   "main": "app.js",
   "scripts": {
-    "test": "nodemon ./ProjetoMercado/app.js"
+    "test": "node ./app.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
     "botbuilder-samples",
     "maratona-bot"
   ],
-  "author": "Vinicius Santos",
+  "author": "Vinicius Santos da Silva",
   "license": "ISC",
   "dependencies": {
     "botbuilder": "^3.14.0",
