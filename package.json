@@ -1,0 +1,40 @@
+{
+  "name": "worspace-bots",
+  "version": "1.0.0",
+  "description": "Maratona de bots",
+  "main": "app.js",
+  "scripts": {
+    "testm1": "node ./modulo1/app.js",
+    "testm2": "node ./modulo2/app.js",
+    "testm33": "node ./modulo3/licao3/app.js",
+    "testm41": "node ./modulo4/licao1/app.js",
+    "testm42": "node ./modulo4/licao2/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "not yet"
+  },
+  "keywords": [
+    "botbuilder",
+    "bots",
+    "chatbots",
+    "botbuilder-samples",
+    "maratona-bot"
+  ],
+  "author": "Vinicius Santos",
+  "license": "ISC",
+  "dependencies": {
+    "botbuilder": "^3.14.0",
+    "botbuilder-cognitiveservices": "^1.1.0",
+    "dotenv-extended": "^2.0.1",
+    "fast-xml-parser": "^3.3.6",
+    "formflowbotbuilder": "^0.1.4",
+    "moment": "^2.21.0",
+    "needle": "^2.2.0",
+    "nodemon": "^1.17.2",
+    "request": "^2.85.0",
+    "restify": "^6.3.4",
+    "valid-url": "^1.0.9",
+    "windows-1252": "^1.0.0"
+  }
+}
